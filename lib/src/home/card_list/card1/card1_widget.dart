@@ -51,7 +51,7 @@ class Card1 extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "R\$ 1.828,24",
+                                      "R\$ 1.500,24",
                                       style: TextStyle(
                                         color: Color(0xFF00BDC6),
                                         fontSize: 30,
@@ -62,7 +62,7 @@ class Card1 extends StatelessWidget {
                                       children: <Widget>[
                                         Text("Limite disponível "),
                                         Text(
-                                          "R\$ 406,34",
+                                          "R\$ 340,34",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Color(0xFF9CD236),
@@ -118,7 +118,7 @@ class Card1 extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: Text(
-                        "Compra mais recente em Netflix.Com no valor de R\$ 45,90 ontem",
+                        "Compra mais recente em bar do cuscuz no valor de R\$ 45,90 ontem",
                       ),
                     ),
                   ),

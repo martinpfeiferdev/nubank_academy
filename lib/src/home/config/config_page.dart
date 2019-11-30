@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nubank_layout/src/shared/widgets/button/button_widget.dart';
+
+import '../home_module.dart';
+import 'config_bloc.dart';
 
 class ConfigPage extends StatefulWidget {
   @override
@@ -7,6 +11,8 @@ class ConfigPage extends StatefulWidget {
 }
 
 class _ConfigPageState extends State<ConfigPage> {
+  final _configBloc = HomeModule.to.bloc<ConfigBloc>();
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -18,32 +24,39 @@ class _ConfigPageState extends State<ConfigPage> {
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 100),
             child: Column(
               children: <Widget>[
-                SizedBox(height: 15),
                 Image.network("https://i.imgur.com/hXgSlZn.png"),
-                SizedBox(height: 10),
-                Text.rich(
-                  TextSpan(children: [
-                    TextSpan(text: "Banco "),
-                    TextSpan(
-                      text: "260",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(text: " - Nu Pagamentos S.A.\n"),
-                    TextSpan(text: "Agência "),
-                    TextSpan(
-                      text: "0001\n",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(text: "Conta "),
-                    TextSpan(
-                      text: "40028922-1",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ]),
-                  style:
-                      TextStyle(color: Colors.white, letterSpacing: 1, height: 2),
-                  textAlign: TextAlign.center,
-                ),
+                StreamBuilder<DocumentSnapshot>(
+                    stream: _configBloc.outConfig,
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return Text.rich(
+                        TextSpan(children: [
+                          TextSpan(text: "Banco "),
+                          TextSpan(
+                            text: snapshot.data['codigoBanco'] + '\n',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: snapshot.data['nomeBanco'] + '\n'),
+                          TextSpan(text: "Agência "),
+                          TextSpan(
+                            text: snapshot.data['numeroAgencia'] + '\n',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: "Conta "),
+                          TextSpan(
+                            text: snapshot.data['numeroConta'] + '\n',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                        style: TextStyle(
+                            color: Colors.white, letterSpacing: 1, height: 2),
+                        textAlign: TextAlign.center,
+                      );
+                    }),
                 SizedBox(height: 30),
                 Divider(height: 0),
                 ListTile(

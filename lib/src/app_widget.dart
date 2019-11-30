@@ -5,7 +5,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Slidy',
+      title: 'Fabwork + flutter',
       theme: ThemeData(
         primaryColor: Color(0xFF84269C),
         canvasColor: Color(0xFF84269C),

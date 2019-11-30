@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "515988136562",
+    "firebase_url": "https://flutter-descomplicado.firebaseio.com",
+    "project_id": "flutter-descomplicado",
+    "storage_bucket": "flutter-descomplicado.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515988136562:android:b4374444ca1f70e2e558eb",
+        "android_client_info": {
+          "package_name": "com.fabwork.nubank_layout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515988136562-o3ihjqa3k94t15e2cd528lemkl5or1un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUKpLyzoF1f_Cr4tSk_Ymlp__py9umFhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515988136562-o3ihjqa3k94t15e2cd528lemkl5or1un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

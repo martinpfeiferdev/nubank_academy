@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nubank_layout/src/app_module.dart';
 
+import '../app_bloc.dart';
 import 'bottom_list/bottom_list_widget.dart';
 import 'card_list/card_list_widget.dart';
 import 'config/config_page.dart';
@@ -60,7 +62,8 @@ class _HomePageState extends State<HomePage>
                         behavior: HitTestBehavior.translucent,
                         onVerticalDragUpdate: (details) {
                           controller.value += details.primaryDelta /
-                              MediaQuery.of(context).size.height * 1.5;
+                              MediaQuery.of(context).size.height *
+                              1.5;
                         },
                         onVerticalDragEnd: (details) {
                           if (controller.value > 0.2)

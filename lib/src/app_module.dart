@@ -7,7 +7,7 @@ class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
         Bloc((i) => AppBloc()),
-      ];
+  ];
 
   @override
   List<Dependency> get dependencies => [];

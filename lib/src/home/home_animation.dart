@@ -18,7 +18,7 @@ mixin HomeAnimation<T extends StatefulWidget>
 
     configOpacityAnimation = Tween<double>(
       begin: 0,
-      end: 1,
+      end: 1, 
     ).animate(controller);
 
     listOpacityAnimation = Tween<double>(
