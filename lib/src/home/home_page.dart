@@ -71,10 +71,7 @@ class _HomePageState extends State<HomePage>
                           else
                             controller.reverse();
                         },
-                        child: Transform.translate(
-                          offset: Offset(0, cardAnimation.value),
-                          child: CardListWidget(),
-                        ),
+                        child: CardListWidget(),
                       ),
                       builder: (context, child) {
                         return Transform.translate(
