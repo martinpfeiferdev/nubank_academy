@@ -14,7 +14,7 @@ description: &#x27;A new Flutter project. Created by Slidy&#x27;
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   dots_indicator: ^1.0.0
@@ -22,10 +22,12 @@ dependencies:
   #dio: ^3.0.1
   rxdart: ^0.22.2
   bloc_pattern: ^2.3.2
-  cloud_firestore: ^0.7.4
-  google_sign_in: 3.0.4
-  firebase_auth: 0.5.15
-  sentry: any
+  # SECURITY FIX: Updated Firebase dependencies to more recent versions
+  cloud_firestore: ^0.16.0
+  google_sign_in: ^5.0.0
+  firebase_auth: ^0.20.0
+  # SECURITY FIX: Pinned sentry version instead of using 'any'
+  sentry: ^4.0.6
   
   flutter:
     sdk: flutter

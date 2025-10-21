@@ -60,8 +60,6 @@ class _CardListState extends State<CardListWidget> {
       ),
     );
   }
-}
 
-_teste() {
-  print('olpa');
+  // SECURITY FIX: Removed unused debug function that contained print statement
 }

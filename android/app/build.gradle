@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 33
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -39,18 +39,36 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.fabwork.nubank_layout"
-        minSdkVersion 16
-        targetSdkVersion 28
+        // SECURITY FIX: Updated from 16 to 21 to avoid known Android vulnerabilities
+        minSdkVersion 21
+        // SECURITY FIX: Updated from 28 to 33 for modern security features
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // SECURITY WARNING: DO NOT use debug signing for production releases!
+            // Before releasing to production:
+            // 1. Create a keystore: keytool -genkey -v -keystore ~/release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias release
+            // 2. Store keystore outside of version control
+            // 3. Configure signing as shown below (uncomment and update):
+            //
+            // signingConfig signingConfigs.release
+            //
+            // signingConfigs {
+            //     release {
+            //         storeFile file(System.getenv("KEYSTORE_FILE") ?: "release-key.jks")
+            //         storePassword System.getenv("KEYSTORE_PASSWORD")
+            //         keyAlias System.getenv("KEY_ALIAS")
+            //         keyPassword System.getenv("KEY_PASSWORD")
+            //     }
+            // }
+
+            // Temporary: Using debug keys for development only
             signingConfig signingConfigs.debug
         }
     }

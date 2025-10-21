@@ -38,6 +38,15 @@
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
 
+# Security - Sensitive files (DO NOT COMMIT)
+**/android/app/google-services.json
+**/ios/Runner/GoogleService-Info.plist
+*.keystore
+*.jks
+.env
+.env.local
+.env.*.local
+
 # iOS/XCode related
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3

@@ -3,22 +3,31 @@ import 'package:nubank_layout/src/app_module.dart';
 import 'package:sentry/sentry.dart';
 import 'dart:async';
 
-final SentryClient _sentry = new SentryClient(dsn: "https://6c48dd12e9af4055903c2662a87482c1@sentry.io/1832089"); // Replace by your own DSN
+// SECURITY: Sentry DSN should be loaded from environment variables
+// For now, Sentry is disabled. To enable:
+// 1. Set SENTRY_DSN environment variable
+// 2. Uncomment the Sentry code below
+final SentryClient _sentry = null; // new SentryClient(dsn: const String.fromEnvironment('SENTRY_DSN'));
 
 Future<Null> _reportError(dynamic error, dynamic stackTrace) async {
-  await _sentry.captureException(
-    exception: error,
-    stackTrace: stackTrace,
-  );
+  // Only report to Sentry if configured
+  if (_sentry != null) {
+    await _sentry.captureException(
+      exception: error,
+      stackTrace: stackTrace,
+    );
+  } else {
+    // In development, print to console
+    debugPrint('Error: $error\nStackTrace: $stackTrace');
+  }
 }
 
 void main() async {
   runZoned<Future<void>>(() async {
     runApp(AppModule());
   }, onError: (error, stackTrace) async {
-   print(error);
-  // Whenever an error occurs, call the `_reportError` function. This sends
-  // Dart errors to the dev console or Sentry depending on the environment.
+    // Whenever an error occurs, call the `_reportError` function. This sends
+    // Dart errors to the dev console or Sentry depending on the environment.
     await _reportError(error, stackTrace);
   });
 }
